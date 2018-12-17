@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FragmentConcept</string>
+    <string name="title_activity_bottom_fragment_by_interaction">BottomFragmentByInteractionActivity</string>
 </resources>
