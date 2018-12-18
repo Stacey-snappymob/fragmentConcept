@@ -7,30 +7,20 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_bottom.*
 
+
 /**
  * A simple [Fragment] subclass.
- * Use the [BottomFragment.newInstance] factory method to
+ * Use the [DraggableFragment.newInstance] factory method to
  * create an instance of this fragment.
  *
  */
 class DraggableFragment : Fragment(), View.OnTouchListener {
-    private var initialY: Float? = null
-
-    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        Log.i("OnScroll: OnTouch", MotionEvent.actionToString(event?.action!!))
-        when (event?.action) {
-            MotionEvent.ACTION_DOWN -> {
-                val shadowBuilder = View.DragShadowBuilder()
-                view?.startDrag(null, shadowBuilder, view, 0)
-                view?.setVisibility(View.VISIBLE)
-                return true
-            }
-        }
-        return true
-    }
+    private var _yDelta: Int? = null
+    private var windowHeight: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +39,44 @@ class DraggableFragment : Fragment(), View.OnTouchListener {
             activity?.onBackPressed()
         }
         textView.text = this.javaClass.simpleName
+
+        view.post {
+            windowHeight = view.height //height is ready
+        }
+    }
+
+    override fun onTouch(view: View, event: MotionEvent): Boolean {
+        val Y = event.rawY.toInt()
+        val layoutParams = view.layoutParams as FrameLayout.LayoutParams
+
+        when (event.action and MotionEvent.ACTION_MASK) {
+            MotionEvent.ACTION_DOWN -> {
+                // _yDelta record how far inside the view we have touched. These
+                // values are used to compute new margins when the view is moved.
+                _yDelta = Y - view.top
+            }
+
+            MotionEvent.ACTION_MOVE -> {
+                if (Y - _yDelta!! < 0) {
+                    layoutParams.topMargin = 0
+                } else {
+                    layoutParams.topMargin = Y - _yDelta!!
+                }
+
+                Log.i("Top Margin", "Top Margin: " + layoutParams.topMargin)
+                Log.i("Top Margin", "View height: " + windowHeight)
+                view.layoutParams = layoutParams
+            }
+
+            // When user remove their finger from screen
+            MotionEvent.ACTION_UP -> {
+                // Dismiss the fragment if it is less than half of the height of screen
+                if (Y - _yDelta!! > (windowHeight!! * 0.5)){
+                    activity?.onBackPressed()
+                }
+            }
+        }
+        return true
     }
 
     companion object {
