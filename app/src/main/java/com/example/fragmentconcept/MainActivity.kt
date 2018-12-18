@@ -20,5 +20,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, BottomFragmentByInteractionActivity::class.java)
             startActivity(intent)
         }
+
+        draggableFragmentWithInteractionButton.setOnClickListener {
+            val intent = Intent(this, DraggableBottomFragmentByInteractionActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

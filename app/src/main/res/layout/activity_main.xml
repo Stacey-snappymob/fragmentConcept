@@ -21,4 +21,11 @@
             android:text="Show Fragment with Interaction"
             app:layout_constraintTop_toBottomOf="@+id/fragmentByDefaultButton"/>
 
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/draggableFragmentWithInteractionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Draggable Fragment with Interaction"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentWithInteractionButton"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

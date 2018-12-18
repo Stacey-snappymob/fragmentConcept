@@ -7,11 +7,6 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_bottom.*
 
-
-
-
-
-
 /**
  * A simple [Fragment] subclass.
  * Use the [BottomFragment.newInstance] factory method to
