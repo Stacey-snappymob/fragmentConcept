@@ -3,11 +3,25 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".BottomFragment">
-
-    <TextView
-            android:id="@+id/textView"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             tools:context=".BottomFragment"
+             android:layout_gravity="bottom"
+android:background="@android:color/holo_green_dark">
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content">
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Close"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
+        <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:text="Text"
+                app:layout_constraintTop_toBottomOf="@+id/closeButton"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -27,6 +27,9 @@ class BottomFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        closeButton.setOnClickListener {
+            activity?.onBackPressed()
+        }
         textView.text = this.javaClass.simpleName
     }
 
