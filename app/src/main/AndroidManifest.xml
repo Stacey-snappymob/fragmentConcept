@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".DraggableBottomFragmentByInteractionActivity">
         </activity>
+        <activity android:name=".DraggableFragmentActivity">
+        </activity>
     </application>
 
 </manifest>

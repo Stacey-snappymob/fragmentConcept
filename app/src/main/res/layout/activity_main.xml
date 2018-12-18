@@ -22,10 +22,17 @@
             app:layout_constraintTop_toBottomOf="@+id/fragmentByDefaultButton"/>
 
     <com.google.android.material.button.MaterialButton
-            android:id="@+id/draggableFragmentWithInteractionButton"
+            android:id="@+id/draggableBottomFragmentWithInteractionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Show Draggable Fragment with Interaction"
             app:layout_constraintTop_toBottomOf="@+id/fragmentWithInteractionButton"/>
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/draggableFragmentButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Draggable Fragment"
+            app:layout_constraintTop_toBottomOf="@+id/draggableBottomFragmentWithInteractionButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
