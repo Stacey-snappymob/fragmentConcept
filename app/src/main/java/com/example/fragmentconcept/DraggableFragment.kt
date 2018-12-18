@@ -1,6 +1,7 @@
 package com.example.fragmentconcept
 
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -28,6 +29,13 @@ class DraggableFragment : Fragment(), View.OnTouchListener {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_bottom, container, false)
+        // Modify fragment width
+        val layoutParams = view.layoutParams as FrameLayout.LayoutParams
+        val deviceWidth = Resources.getSystem().displayMetrics.widthPixels
+        val desiredDisplayWidth = deviceWidth * 0.6
+        val margin = ((deviceWidth - desiredDisplayWidth) / 2).toInt()
+        layoutParams.setMargins(margin, 0, margin, 0)
+        view.layoutParams = layoutParams
         return view
     }
 
