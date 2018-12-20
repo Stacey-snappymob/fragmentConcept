@@ -30,5 +30,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DraggableFragmentActivity::class.java)
             startActivity(intent)
         }
+
+        draggableWrapContentFragmentButton.setOnClickListener {
+            val intent = Intent(this, DraggableWrapContentActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

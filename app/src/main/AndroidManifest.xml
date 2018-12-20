@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".DraggableFragmentActivity">
         </activity>
+        <activity android:name=".DraggableWrapContentActivity">
+        </activity>
     </application>
 
 </manifest>
