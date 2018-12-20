@@ -42,4 +42,11 @@
             android:text="Show Draggable Fragment with wrap parent"
             app:layout_constraintTop_toBottomOf="@+id/draggableFragmentButton"/>
 
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/draggableFragmentWithTransitionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Draggable Fragment With Transition"
+            app:layout_constraintTop_toBottomOf="@+id/draggableWrapContentFragmentButton"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

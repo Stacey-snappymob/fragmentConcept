@@ -35,5 +35,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DraggableWrapContentActivity::class.java)
             startActivity(intent)
         }
+
+        draggableFragmentWithTransitionButton.setOnClickListener {
+            val intent = Intent(this, DraggableTransitionActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
