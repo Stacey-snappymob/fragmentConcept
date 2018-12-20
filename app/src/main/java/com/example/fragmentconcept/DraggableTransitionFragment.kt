@@ -7,6 +7,7 @@ import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_draggable_transition.*
 
@@ -37,11 +38,23 @@ class DraggableTransitionFragment : Fragment() {
         }
 
         animateButton.setOnClickListener {
-            TransitionManager.go(scene2)
+            // TransitionManager.go(scene2)
+
+            // without Scene
+            TransitionManager.beginDelayedTransition(sceneLayout)
+            // Then, we can just change view properties as usual.
+            val square = sceneLayout.findViewById<ImageView>(R.id.iconImageView)
+            val params = square.getLayoutParams()
+            val newSize = resources.getDimensionPixelSize(R.dimen.square_size_expanded)
+            params.width = newSize
+            params.height = newSize
+            square.setLayoutParams(params)
+            // END_INCLUDE(transition_dynamic)
         }
 
         scene1 = Scene.getSceneForLayout(sceneLayout, R.layout.scene_1, context)
-        scene2 = Scene.getSceneForLayout(sceneLayout, R.layout.scene_2, context)
+        // scene2 = Scene.getSceneForLayout(sceneLayout, R.layout.scene_2, context)
+
     }
 
     companion object {
