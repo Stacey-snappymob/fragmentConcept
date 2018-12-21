@@ -3,6 +3,7 @@ package com.example.fragmentconcept
 
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
@@ -53,9 +54,16 @@ class DraggableWrapContentFragment : Fragment(), View.OnTouchListener, ViewTreeO
         when (event.action and MotionEvent.ACTION_MASK) {
             MotionEvent.ACTION_DOWN -> {
                 // This is called when user put their finger on screen for dragging
+                Log.i("DOWN","eventY:DOWN: " + event.y)
+                Log.i("DOWN","rawY:DOWN: " + event.rawY)
+                Log.i("DOWN","viewY:DOWN: " + view.top)
             }
 
             MotionEvent.ACTION_MOVE -> {
+                
+                Log.i("MOVE","eventY:MOVE: " + event.y)
+                Log.i("MOVE","rawY:MOVE: " + event.rawY)
+                Log.i("MOVE","viewY:MOVE: " + view.top)
                 val maxYPosition = visibleContentHeight - viewMeasuredHeight!!
                 // event.y refers to the changes of y position
                 val calculatedYPosition = (view.top + event.y).toInt()
@@ -66,11 +74,15 @@ class DraggableWrapContentFragment : Fragment(), View.OnTouchListener, ViewTreeO
                     view.top = calculatedYPosition
                 }
 
+                view.top = event.rawY.toInt()
+
             }
 
             // When user remove their finger from screen
             MotionEvent.ACTION_UP -> {
-
+                Log.i("UP","eventY:UP: " + event.y)
+                Log.i("UP","rawY:UP: " + event.rawY)
+                Log.i("UP","viewY:UP: " + view.top)
                 // Dismiss the fragment if it is less than half of the height of view
                 if (visibleContentHeight - view.top < (viewMeasuredHeight!! * 0.5)){
                     activity?.onBackPressed()
