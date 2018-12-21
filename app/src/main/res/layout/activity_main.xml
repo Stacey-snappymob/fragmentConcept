@@ -18,7 +18,7 @@
             android:id="@+id/fragmentWithInteractionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Fragment with Interaction"
+            android:text="Show Fragment by Interaction"
             app:layout_constraintTop_toBottomOf="@+id/fragmentByDefaultButton"/>
 
     <!--<com.google.android.material.button.MaterialButton-->
@@ -32,14 +32,14 @@
             android:id="@+id/draggableFragmentButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Draggable Fragment"
+            android:text="Show Draggable Fragment (MATCH_PARENT)"
             app:layout_constraintTop_toBottomOf="@+id/fragmentWithInteractionButton"/>
 
     <com.google.android.material.button.MaterialButton
             android:id="@+id/draggableWrapContentFragmentButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Draggable Fragment with wrap parent"
+            android:text="Show Draggable Fragment (WRAP_CONTENT)"
             app:layout_constraintTop_toBottomOf="@+id/draggableFragmentButton"/>
 
     <com.google.android.material.button.MaterialButton
