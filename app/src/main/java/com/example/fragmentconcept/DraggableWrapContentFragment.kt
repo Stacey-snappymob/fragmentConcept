@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_bottom.*
  */
 class DraggableWrapContentFragment : Fragment(), View.OnTouchListener, ViewTreeObserver.OnGlobalLayoutListener {
     private var viewMeasuredHeight: Int? = null
+    private var deltaY: Float? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,25 +58,21 @@ class DraggableWrapContentFragment : Fragment(), View.OnTouchListener, ViewTreeO
                 Log.i("DOWN","eventY:DOWN: " + event.y)
                 Log.i("DOWN","rawY:DOWN: " + event.rawY)
                 Log.i("DOWN","viewY:DOWN: " + view.top)
+                deltaY = view.top - event.rawY
             }
 
             MotionEvent.ACTION_MOVE -> {
-                
                 Log.i("MOVE","eventY:MOVE: " + event.y)
                 Log.i("MOVE","rawY:MOVE: " + event.rawY)
                 Log.i("MOVE","viewY:MOVE: " + view.top)
                 val maxYPosition = visibleContentHeight - viewMeasuredHeight!!
-                // event.y refers to the changes of y position
-                val calculatedYPosition = (view.top + event.y).toInt()
+                val calculatedYPosition = (event.rawY + deltaY!!).toInt()
 
                 if (calculatedYPosition <= maxYPosition) {
                     view.top = maxYPosition
                 } else {
                     view.top = calculatedYPosition
                 }
-
-                view.top = event.rawY.toInt()
-
             }
 
             // When user remove their finger from screen
