@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         draggableWrapContentFragmentButton.setOnClickListener {
             val intent = Intent(this, DraggableWrapContentActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.abc_slide_in_top, 0)
         }
 
         draggableFragmentWithTransitionButton.setOnClickListener {

@@ -20,4 +20,9 @@ class DraggableWrapContentActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(0, R.anim.abc_slide_out_top)
+    }
 }
